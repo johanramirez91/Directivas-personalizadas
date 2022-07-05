@@ -1,1 +1,26 @@
-<p>agregar works!</p>
+<h2>Agregar producto</h2>
+<form [formGroup]="formulario">
+  <div class="row g-3 align-items-center mb-3 mt-2">
+    <div class="col-auto">
+      <label class="col-form-label">Nombre:</label>
+    </div>
+    <div class="col-auto">
+      <input type="text" class="form-control" formControlName="nombre" />
+    </div>
+    <div class="col-auto">
+      <article class="form-text" *ngIf="validarCampo('nombre')">
+        Este campo es requerido
+      </article>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col">
+      <button class="btn btn-primary">Guardar</button>
+    </div>
+  </div>
+</form>
+
+<h4 class="mt-5">Formulario</h4>
+<pre>valid: {{ formulario.valid }}</pre>
+<pre>valid: {{ formulario.value | json }}</pre>

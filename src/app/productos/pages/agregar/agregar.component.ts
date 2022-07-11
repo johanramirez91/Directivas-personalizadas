@@ -7,6 +7,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./agregar.component.scss'],
 })
 export class AgregarComponent implements OnInit {
+  color: string = 'red';
+  texto: string = 'Campo requerido';
   formulario: FormGroup = this.fb.group({
     nombre: ['', Validators.required],
   });
@@ -20,5 +22,16 @@ export class AgregarComponent implements OnInit {
       (this.formulario.get(campo)?.invalid || false) &&
       (this.formulario.get(campo)?.touched || false)
     );
+  }
+
+  cambiarColor(): void {
+    const color = '#xxxxxx'.replace(/x/g, (y) =>
+      ((Math.random() * 16) | 0).toString(16)
+    );
+    this.color = color;
+  }
+
+  cambiarMensaje() {
+    this.texto = Math.random().toString();
   }
 }
